@@ -3,6 +3,7 @@
     package="com.example.marketapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,6 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MarketApp">
+        <activity
+            android:name=".activity.MyOderActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.AllBillActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.DetailBillActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.HistoryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.NotifiActivity"
+            android:exported="true" />
         <activity
             android:name=".activity.InforActivity"
             android:exported="true" />
@@ -33,14 +49,12 @@
             android:exported="true" />
         <activity
             android:name=".activity.SplashScreenActivity"
-            android:exported="true" >
-
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".activity.LoginActivity"
@@ -50,7 +64,9 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"/>
+            android:exported="true" >
+
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

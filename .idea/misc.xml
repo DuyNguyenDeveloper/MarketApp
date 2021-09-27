@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MarketApp/app/src/main/res/drawable/border_text.xml" value="0.2703125" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/activity_history.xml" value="0.25416666666666665" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/activity_infor.xml" value="0.2" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/activity_notifi.xml" value="0.25416666666666665" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/activity_verify_your_phone.xml" value="0.25416666666666665" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/fragment_account.xml" value="0.25416666666666665" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/fragment_favorite.xml" value="0.25416666666666665" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/fragment_home.xml" value="0.1793478260869565" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/fragment_offers.xml" value="0.25416666666666665" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/fragment_shopping.xml" value="0.1598731884057971" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.13179347826086957" />
         <entry key="app/src/main/res/layout/activity_infor.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.14447463768115942" />
