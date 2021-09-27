@@ -21,6 +21,7 @@ public class HistoryActivity extends AppCompatActivity {
         mTablayout = findViewById(R.id.tab_layout);
         vPager = findViewById(R.id.v_pager);
 
+
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         vPager.setAdapter(viewPagerAdapter);
         mTablayout.setupWithViewPager(vPager);

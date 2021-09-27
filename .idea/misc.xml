@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MarketApp/app/src/main/res/drawable/bg_text.xml" value="0.2703125" />
         <entry key="..\:/MarketApp/app/src/main/res/drawable/border_text.xml" value="0.2703125" />
         <entry key="..\:/MarketApp/app/src/main/res/layout/activity_history.xml" value="0.25416666666666665" />
         <entry key="..\:/MarketApp/app/src/main/res/layout/activity_infor.xml" value="0.2" />
