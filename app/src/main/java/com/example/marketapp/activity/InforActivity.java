@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,24 +25,23 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class InforActivity extends AppCompatActivity {
     EditText edtName, edtBd, edtEmail, edtNumberP, edtAddress;
-    ImageView ivBack;
     Button btnUpdate;
     TextView tvCp, tvTaiKhoan;
     String tk;
     private SharedPreferences pref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_infor);
         mapView();
         showDataUser();
-        ivBack.setOnClickListener(view -> {
-            onBackPressed();
-        });
         btnUpdate.setOnClickListener(view -> {
             updateServer();
         });
+
     }
+
     public void mapView() {
         edtName = findViewById(R.id.edtName);
         edtBd = findViewById(R.id.edtBirthDay);
@@ -51,7 +49,6 @@ public class InforActivity extends AppCompatActivity {
         edtNumberP = findViewById(R.id.edtPhoneN);
         edtAddress = findViewById(R.id.edtAddress);
         btnUpdate = findViewById(R.id.btnUpdateInfor);
-        ivBack = findViewById(R.id.ivBack);
         tvCp = findViewById(R.id.tvCp);
         tvTaiKhoan = findViewById(R.id.tvTaiKhoan);
         tk = getIntent().getStringExtra("TK");

@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6F6F6"
     tools:context=".fragment.HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_vertical"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -20,8 +18,8 @@
             <ImageView
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_margin="5dp"
-
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
                 android:src="@mipmap/ic_search" />
 
             <TextView
@@ -44,31 +42,34 @@
                 android:src="@mipmap/ic_triangle" />
 
             <ImageView
+                android:id="@+id/ivNotify"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="15dp"
-                android:id="@+id/ivNotify"
                 android:src="@mipmap/ic_notifi" />
 
         </RelativeLayout>
 
-        <androidx.cardview.widget.CardView
+        <com.smarteist.autoimageslider.SliderView
+            android:id="@+id/image_slider"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            app:cardCornerRadius="20dp">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@mipmap/ic_bg">
-
-            </ImageView>
-
-        </androidx.cardview.widget.CardView>
+            android:layout_height="150dp"
+            android:elevation="8dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            app:sliderAnimationDuration="600"
+            app:sliderAutoCycleDirection="back_and_forth"
+            app:sliderAutoCycleEnabled="true"
+            app:sliderIndicatorAnimationDuration="600"
+            app:sliderIndicatorGravity="center_horizontal|bottom"
+            app:sliderIndicatorMargin="15dp"
+            app:sliderIndicatorOrientation="horizontal"
+            app:sliderIndicatorPadding="3dp"
+            app:sliderIndicatorRadius="1dp"
+            app:sliderScrollTimeInSec="3"
+            app:sliderStartAutoCycle="true" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -109,12 +110,12 @@
                     android:layout_height="70dp"
                     android:layout_margin="5dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="10dp">
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:scaleType="fitCenter"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
                         android:src="@mipmap/ic_meat">
 
                     </ImageView>
@@ -141,12 +142,12 @@
                     android:layout_height="70dp"
                     android:layout_margin="5dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="10dp">
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:scaleType="fitCenter"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
                         android:src="@mipmap/ic_fish">
 
                     </ImageView>
@@ -174,12 +175,12 @@
                     android:layout_height="70dp"
                     android:layout_margin="5dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="10dp">
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:scaleType="fitCenter"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
                         android:src="@mipmap/ic_rau">
 
                     </ImageView>
@@ -207,12 +208,12 @@
                     android:layout_height="70dp"
                     android:layout_margin="5dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="10dp">
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:scaleType="fitCenter"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
                         android:src="@mipmap/ic_milkegg">
 
                     </ImageView>
@@ -248,12 +249,12 @@
                     android:layout_height="70dp"
                     android:layout_margin="5dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="10dp">
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:scaleType="fitCenter"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
                         android:src="@mipmap/ic_fruit">
 
                     </ImageView>
@@ -281,11 +282,12 @@
                     android:layout_height="70dp"
                     android:layout_margin="5dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="10dp">
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
                         android:src="@mipmap/ic_driedf">
 
                     </ImageView>
@@ -313,11 +315,12 @@
                     android:layout_height="70dp"
                     android:layout_margin="5dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="10dp">
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
                         android:src="@mipmap/ic_fastfood">
 
                     </ImageView>
@@ -346,12 +349,13 @@
                     android:layout_height="70dp"
                     android:layout_margin="5dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="10dp">
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_height="match_parent"
+
+                        android:scaleType="centerCrop"
                         android:src="@mipmap/ic_drink">
 
                     </ImageView>
@@ -427,7 +431,7 @@
                         android:layout_marginTop="75dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginBottom="10dp"
-                        android:background="#68918D8D"
+                        android:background="#94807B7B"
                         android:orientation="vertical">
 
                         <TextView
@@ -435,7 +439,6 @@
                             android:layout_height="match_parent"
                             android:text="Các món từ trứng"
                             android:textAllCaps="true"
-                            android:textColor="@color/black"
                             android:textSize="10sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -463,7 +466,7 @@
                         android:layout_marginTop="75dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginBottom="10dp"
-                        android:background="#68918D8D"
+                        android:background="#94807B7B"
                         android:orientation="vertical">
 
                         <TextView
@@ -471,7 +474,7 @@
                             android:layout_height="match_parent"
                             android:text="Bò xào măng"
                             android:textAllCaps="true"
-                            android:textColor="@color/black"
+
                             android:textSize="10sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -499,7 +502,7 @@
                         android:layout_marginTop="75dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginBottom="10dp"
-                        android:background="#68918D8D"
+                        android:background="#94807B7B"
                         android:orientation="vertical">
 
                         <TextView
@@ -507,7 +510,6 @@
                             android:layout_height="match_parent"
                             android:text="Bò xào măng"
                             android:textAllCaps="true"
-                            android:textColor="@color/black"
                             android:textSize="10sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -539,17 +541,14 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:padding="5dp"
-            android:weightSum="3">
+            android:padding="5dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
@@ -557,12 +556,11 @@
                     android:layout_height="70dp"
                     android:layout_margin="5dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="10dp">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:scaleType="fitCenter"
                         android:src="@mipmap/ic_meat">
 
                     </ImageView>
@@ -581,10 +579,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:backgroundTint="#FFFFFF"
-                    android:elevation="4dp"
                     android:text="Thêm"
-                    android:textColor="#03A9F4"
                     android:textSize="10sp" />
             </LinearLayout>
 
@@ -593,8 +588,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_weight="1"
-                android:gravity="center"
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
@@ -602,12 +595,11 @@
                     android:layout_height="70dp"
                     android:layout_margin="5dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="10dp">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:scaleType="fitCenter"
                         android:src="@mipmap/ic_fish">
 
                     </ImageView>
@@ -626,18 +618,13 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:backgroundTint="#FFFFFF"
-                    android:elevation="4dp"
                     android:text="Thêm"
-                    android:textColor="#03A9F4"
                     android:textSize="10sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
@@ -645,12 +632,11 @@
                     android:layout_height="70dp"
                     android:layout_margin="5dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="5dp">
+                    app:cardElevation="10dp">
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:scaleType="fitCenter"
                         android:src="@mipmap/ic_pepsi">
 
                     </ImageView>
@@ -669,10 +655,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:backgroundTint="#FFFFFF"
-                    android:elevation="4dp"
                     android:text="Thêm"
-                    android:textColor="#03A9F4"
                     android:textSize="10sp" />
             </LinearLayout>
 
@@ -681,4 +664,4 @@
 
     </LinearLayout>
 
-</ScrollView>
+</FrameLayout>
