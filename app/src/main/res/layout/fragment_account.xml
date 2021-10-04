@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".fragment.AccountFragment">
 
@@ -51,11 +52,12 @@
         android:layout_marginRight="10dp"
         android:orientation="horizontal">
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="8dp"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginRight="10dp"
-            android:background="#EA3EF7">
+            app:cardBackgroundColor="#EA3EF7">
 
             <TextView
                 android:layout_width="match_parent"
@@ -64,7 +66,7 @@
                 android:padding="5dp"
                 android:text="Tìm bạn cùng mua"
                 android:textColor="#000000" />
-        </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:layout_width="match_parent"
