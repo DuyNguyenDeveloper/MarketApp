@@ -28,6 +28,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tvName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="tên sản phẩm"
@@ -35,6 +36,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tvPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="giá sản phẩm"
@@ -42,6 +44,7 @@
                 android:textSize="16dp" />
 
             <TextView
+                android:id="@+id/tvSL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="số lượng | khối lượng"

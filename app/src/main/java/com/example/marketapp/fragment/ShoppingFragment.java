@@ -6,11 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.marketapp.MainActivity;
 import com.example.marketapp.R;
 import com.example.marketapp.activity.MyOderActivity;
+import com.example.marketapp.adpater.AdapterAllProduct;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.squareup.picasso.Picasso;
 
@@ -19,7 +22,8 @@ public class ShoppingFragment extends Fragment {
     ImageView ivMeat, ivVegetable, ivMilk, ivFruit, ivDryFood, ivFastFood, ivDrink;
     String imageUri, imageUri1, imageUri2, imageUri3, imageUri4, imageUri5, imageUri6;
     ExtendedFloatingActionButton extended_fab;
-
+    private ListView lvProduct;
+    private AdapterAllProduct adapter;
     public ShoppingFragment() {
         // Required empty public constructor
     }
@@ -38,6 +42,10 @@ public class ShoppingFragment extends Fragment {
         mapView(view);
         slideCatalogue();
         setClick();
+
+        adapter = new AdapterAllProduct(getContext(), MainActivity.store.getStoreProduct());
+        lvProduct = view.findViewById(R.id.lvAllProduct);
+        lvProduct.setAdapter(adapter);
         return view;
     }
 
