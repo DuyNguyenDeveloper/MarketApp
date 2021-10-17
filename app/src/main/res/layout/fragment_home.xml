@@ -42,9 +42,9 @@
                 android:src="@mipmap/ic_triangle" />
 
             <ImageView
+                android:id="@+id/ivNotify"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:id="@+id/ivNotify"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="15dp"
@@ -52,21 +52,24 @@
 
         </RelativeLayout>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="355dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            app:cardCornerRadius="20dp">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@mipmap/ic_bg">
-
-            </ImageView>
-
-        </androidx.cardview.widget.CardView>
+        <com.smarteist.autoimageslider.SliderView
+            android:id="@+id/image_slider"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:elevation="8dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            app:sliderAnimationDuration="600"
+            app:sliderAutoCycleDirection="back_and_forth"
+            app:sliderAutoCycleEnabled="true"
+            app:sliderIndicatorAnimationDuration="600"
+            app:sliderIndicatorGravity="center_horizontal|bottom"
+            app:sliderIndicatorMargin="15dp"
+            app:sliderIndicatorOrientation="horizontal"
+            app:sliderIndicatorPadding="3dp"
+            app:sliderIndicatorRadius="1dp"
+            app:sliderScrollTimeInSec="3"
+            app:sliderStartAutoCycle="true" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -111,7 +114,8 @@
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
                         android:src="@mipmap/ic_meat">
 
                     </ImageView>
@@ -142,7 +146,8 @@
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
                         android:src="@mipmap/ic_fish">
 
                     </ImageView>
@@ -174,7 +179,8 @@
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
                         android:src="@mipmap/ic_rau">
 
                     </ImageView>
@@ -206,7 +212,8 @@
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
                         android:src="@mipmap/ic_milkegg">
 
                     </ImageView>
@@ -246,7 +253,8 @@
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
                         android:src="@mipmap/ic_fruit">
 
                     </ImageView>
@@ -278,7 +286,8 @@
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
                         android:src="@mipmap/ic_driedf">
 
                     </ImageView>
@@ -310,7 +319,8 @@
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
                         android:src="@mipmap/ic_fastfood">
 
                     </ImageView>
@@ -343,8 +353,9 @@
 
                     <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_height="match_parent"
+
+                        android:scaleType="centerCrop"
                         android:src="@mipmap/ic_drink">
 
                     </ImageView>
