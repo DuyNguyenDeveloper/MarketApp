@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="50dp"
     tools:context=".fragment.HomeFragment">
 
     <LinearLayout
@@ -11,54 +12,53 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="35dp"
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search"
+                android:layout_width="0dp"
                 android:layout_height="35dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:src="@mipmap/ic_search" />
-
-            <TextView
-                android:layout_width="79dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="45dp"
-                android:padding="5dp"
-                android:text="choose place"
-                android:textSize="10sp"
-                android:textStyle="bold" />
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="6"
+                android:background="@drawable/bg_logout"
+                app:iconifiedByDefault="false"
+                app:queryBackground="@null"
+                app:searchIcon="@drawable/icons8_search_50px"
+                app:submitBackground="@null" />
 
             <ImageView
-                android:layout_width="10dp"
-                android:layout_height="10dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="40dp"
-                android:src="@mipmap/ic_triangle" />
+                android:id="@+id/ivChose"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="6dp"
+                android:layout_weight="0.7"
+                android:src="@drawable/icons8_shop_60px_1" />
 
             <ImageView
                 android:id="@+id/ivNotify"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="15dp"
-                android:src="@mipmap/ic_notifi" />
-
-        </RelativeLayout>
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="6dp"
+                android:layout_weight="0.7"
+                android:src="@drawable/icons8_notification_50px" />
+        </LinearLayout>
 
         <com.smarteist.autoimageslider.SliderView
             android:id="@+id/image_slider"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:elevation="8dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
+            android:elevation="8dp"
             app:sliderAnimationDuration="600"
             app:sliderAutoCycleDirection="back_and_forth"
             app:sliderAutoCycleEnabled="true"
@@ -68,34 +68,21 @@
             app:sliderIndicatorOrientation="horizontal"
             app:sliderIndicatorPadding="3dp"
             app:sliderIndicatorRadius="1dp"
-            app:sliderScrollTimeInSec="3"
+            app:sliderScrollTimeInSec="2"
             app:sliderStartAutoCycle="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:text="Danh mục sản phẩm"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Danh mục sản phẩm"
-                    android:textAllCaps="true"
-                    android:textColor="@color/black"
-                    android:textSize="10sp"
-                    android:textStyle="bold" />
-
-
-            </RelativeLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="5dp">
@@ -108,15 +95,15 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="8dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="10dp">
+                    app:cardElevation="5dp">
 
                     <ImageView
+                        android:id="@+id/ivMeat"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@mipmap/ic_meat">
+                        android:scaleType="centerCrop">
 
                     </ImageView>
 
@@ -140,15 +127,15 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="8dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="10dp">
+                    app:cardElevation="5dp">
 
                     <ImageView
+                        android:id="@+id/ivFish"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@mipmap/ic_fish">
+                        android:scaleType="centerCrop">
 
                     </ImageView>
 
@@ -173,17 +160,15 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="8dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="10dp">
+                    app:cardElevation="5dp">
 
                     <ImageView
+                        android:id="@+id/ivVegetable"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@mipmap/ic_rau">
-
-                    </ImageView>
+                        android:scaleType="centerCrop"></ImageView>
 
                 </androidx.cardview.widget.CardView>
 
@@ -206,17 +191,15 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="8dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="10dp">
+                    app:cardElevation="5dp">
 
                     <ImageView
+                        android:id="@+id/ivMilk"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:src="@mipmap/ic_milkegg">
-
-                    </ImageView>
+                        android:scaleType="centerCrop"></ImageView>
 
                 </androidx.cardview.widget.CardView>
 
@@ -234,7 +217,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="5dp">
@@ -247,17 +230,16 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="8dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="10dp">
+                    app:cardElevation="5dp">
 
                     <ImageView
+                        android:id="@+id/ivFruit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@mipmap/ic_fruit">
-
-                    </ImageView>
+/>
 
                 </androidx.cardview.widget.CardView>
 
@@ -280,17 +262,16 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="8dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="10dp">
+                    app:cardElevation="5dp">
 
                     <ImageView
+                        android:id="@+id/ivDryFood"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@mipmap/ic_driedf">
-
-                    </ImageView>
+                     />
 
                 </androidx.cardview.widget.CardView>
 
@@ -313,17 +294,16 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="8dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="10dp">
+                    app:cardElevation="5dp">
 
                     <ImageView
+                        android:id="@+id/ivFastFood"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@mipmap/ic_fastfood">
-
-                    </ImageView>
+                      />
 
                 </androidx.cardview.widget.CardView>
 
@@ -347,16 +327,15 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:layout_margin="5dp"
+                    android:layout_margin="8dp"
                     app:cardCornerRadius="10dp"
-                    app:cardElevation="10dp">
+                    app:cardElevation="5dp">
 
                     <ImageView
+                        android:id="@+id/ivDrink"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-
-                        android:scaleType="centerCrop"
-                        android:src="@mipmap/ic_drink">
+                        android:scaleType="centerCrop">
 
                     </ImageView>
 
@@ -378,24 +357,29 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="2">
 
-            <RelativeLayout
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:layout_weight="1.7"
+                android:gravity="center_vertical"
+                android:text="Món ngon mỗi này"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="10sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Món ngon mỗi ngày"
-                    android:textAllCaps="true"
-                    android:textColor="@color/black"
-                    android:textSize="10sp"
-                    android:textStyle="bold" />
-
-
-            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:text="xem thêm"
+                android:textColor="#03A9F4"
+                android:textSize="10sp" />
         </LinearLayout>
 
         <HorizontalScrollView
@@ -422,26 +406,18 @@
 
                     </ImageView>
 
-                    <LinearLayout
-                        android:id="@+id/featured_bg"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="75dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="10dp"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_gravity="bottom"
                         android:background="#94807B7B"
-                        android:orientation="vertical">
+                        android:gravity="center_vertical"
+                        android:paddingStart="5dp"
+                        android:text="Các món từ trứng"
+                        android:textAllCaps="true"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="Các món từ trứng"
-                            android:textAllCaps="true"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
@@ -458,26 +434,18 @@
 
                     </ImageView>
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="75dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="10dp"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_gravity="bottom"
                         android:background="#94807B7B"
-                        android:orientation="vertical">
+                        android:gravity="center_vertical"
+                        android:paddingStart="5dp"
+                        android:text="Rồng xanh xào tỏi"
+                        android:textAllCaps="true"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="Bò xào măng"
-                            android:textAllCaps="true"
-
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
@@ -494,25 +462,18 @@
 
                     </ImageView>
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="75dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="10dp"
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_gravity="bottom"
                         android:background="#94807B7B"
-                        android:orientation="vertical">
+                        android:gravity="center_vertical"
+                        android:paddingStart="5dp"
+                        android:text="Bò xào măng tây"
+                        android:textAllCaps="true"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="Bò xào măng"
-                            android:textAllCaps="true"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
         </HorizontalScrollView>
@@ -520,35 +481,43 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="2">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1.7"
+                android:gravity="center_vertical"
                 android:text="sản phẩm từng mua"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="10sp"
                 android:textStyle="bold" />
 
-            <RelativeLayout
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-
-            </RelativeLayout>
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:text="xem thêm"
+                android:textColor="#03A9F4"
+                android:textSize="10sp" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:padding="5dp">
+            android:padding="5dp"
+            android:weightSum="4">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
@@ -576,11 +545,13 @@
                     android:textSize="10sp"
                     android:textStyle="bold" />
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:text="Thêm"
-                    android:textSize="10sp" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_btnproduct"
+                    android:text="thêm"
+                    android:textColor="#1291ED"
+                    android:textSize="12dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -588,6 +559,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
@@ -615,16 +588,21 @@
                     android:textSize="10sp"
                     android:textStyle="bold" />
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:text="Thêm"
-                    android:textSize="10sp" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_btnproduct"
+                    android:text="thêm"
+                    android:textColor="#1291ED"
+                    android:textSize="12dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
@@ -652,16 +630,58 @@
                     android:textSize="10sp"
                     android:textStyle="bold" />
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:text="Thêm"
-                    android:textSize="10sp" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_btnproduct"
+                    android:text="thêm"
+                    android:textColor="#1291ED"
+                    android:textSize="12dp" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_margin="5dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="10dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/ic_beefshank">
+
+                    </ImageView>
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="beefshank"
+                    android:textAlignment="center"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_btnproduct"
+                    android:text="thêm"
+                    android:textColor="#1291ED"
+                    android:textSize="12dp" />
+            </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
 
-</FrameLayout>
+</ScrollView>

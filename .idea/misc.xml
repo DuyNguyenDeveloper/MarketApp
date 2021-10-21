@@ -26,6 +26,27 @@
         <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp/app/src/main/res/layout/activity_smsphone.xml" value="0.25416666666666665" />
         <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp/app/src/main/res/layout/activity_success_verify.xml" value="0.25416666666666665" />
         <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp/app/src/main/res/layout/activity_verify_your_email.xml" value="0.25416666666666665" />
+        <entry key="..\:/DuAnThucTap/app/src/main/res/drawable/bg_logout.xml" value="0.28615384615384615" />
+        <entry key="..\:/DuAnThucTap/app/src/main/res/drawable/bg_text.xml" value="0.28615384615384615" />
+        <entry key="..\:/DuAnThucTap/app/src/main/res/drawable/shape_bg_search.xml" value="0.28615384615384615" />
+        <entry key="..\:/DuAnThucTap/app/src/main/res/layout/activity_find_store.xml" value="0.2726449275362319" />
+        <entry key="..\:/DuAnThucTap/app/src/main/res/layout/activity_login.xml" value="0.2726449275362319" />
+        <entry key="..\:/DuAnThucTap/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/DuAnThucTap/app/src/main/res/layout/activity_register.xml" value="0.1334853090172239" />
+        <entry key="..\:/DuAnThucTap/app/src/main/res/layout/activity_smsemail.xml" value="0.1334853090172239" />
+        <entry key="..\:/DuAnThucTap/app/src/main/res/layout/fragment_account.xml" value="0.264" />
+        <entry key="..\:/DuAnThucTap/app/src/main/res/layout/fragment_favorite.xml" value="0.2" />
+        <entry key="..\:/DuAnThucTap/app/src/main/res/layout/fragment_home.xml" value="0.264" />
+        <entry key="..\:/DuAnThucTap/app/src/main/res/layout/fragment_shopping.xml" value="0.22418478260869565" />
+        <entry key="..\:/DuAnThucTap/app/src/main/res/layout/item_product.xml" value="0.22418478260869565" />
+        <entry key="..\:/DuAnThucTap/app/src/main/res/layout/item_store.xml" value="0.2726449275362319" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/activity_infor.xml" value="0.1334853090172239" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/activity_main.xml" value="0.1334853090172239" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/activity_my_oder.xml" value="0.1334853090172239" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/activity_notifi.xml" value="0.1334853090172239" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/fragment_account.xml" value="0.4" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/fragment_favorite.xml" value="0.1334853090172239" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/fragment_home.xml" value="0.1334853090172239" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.13179347826086957" />
         <entry key="app/src/main/res/layout/activity_infor.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.16032608695652173" />
