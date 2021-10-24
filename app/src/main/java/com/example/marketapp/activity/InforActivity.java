@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,10 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.marketapp.R;
 import com.example.marketapp.models.User;
-import com.example.marketapp.server.Constants;
-import com.example.marketapp.server.RequestInterface;
-import com.example.marketapp.server.ServerRequest;
-import com.example.marketapp.server.ServerResponse;
+import com.example.marketapp.service.CallApi;
+import com.example.marketapp.service.Constants;
+import com.example.marketapp.service.ServerRequest;
+import com.example.marketapp.service.ServerResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,7 +26,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class InforActivity extends AppCompatActivity {
     EditText edtName, edtBd, edtEmail, edtNumberP, edtAddress;
     Button btnUpdate;
-    ImageView ivBack;
     TextView tvCp, tvTaiKhoan;
     String tk;
     private SharedPreferences pref;
@@ -41,9 +39,7 @@ public class InforActivity extends AppCompatActivity {
         btnUpdate.setOnClickListener(view -> {
             updateServer();
         });
-        ivBack.setOnClickListener(view -> {
-            onBackPressed();
-        });
+
     }
 
     public void mapView() {
@@ -53,7 +49,6 @@ public class InforActivity extends AppCompatActivity {
         edtNumberP = findViewById(R.id.edtPhoneN);
         edtAddress = findViewById(R.id.edtAddress);
         btnUpdate = findViewById(R.id.btnUpdateInfor);
-        ivBack = findViewById(R.id.ivBack);
         tvCp = findViewById(R.id.tvCp);
         tvTaiKhoan = findViewById(R.id.tvTaiKhoan);
         tk = getIntent().getStringExtra("TK");
@@ -61,7 +56,7 @@ public class InforActivity extends AppCompatActivity {
 
     public void updateServer() {
         Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
-        RequestInterface requestInterface = retrofit.create(RequestInterface.class);
+        CallApi requestInterface = retrofit.create(CallApi.class);
         User user = new User();
         user.setTaiKhoan(tk);
         user.setTenNguoiDung(edtName.getText().toString());

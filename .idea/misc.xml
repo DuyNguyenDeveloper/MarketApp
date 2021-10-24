@@ -3,39 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp-master/app/src/main/res/drawable/border_radiobt.xml" value="0.2703125" />
-        <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp-master/app/src/main/res/drawable/ic_search.xml" value="0.2703125" />
-        <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp-master/app/src/main/res/drawable/search_store.xml" value="0.2703125" />
-        <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp-master/app/src/main/res/layout/activity_find_store.xml" value="0.1793478260869565" />
-        <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp-master/app/src/main/res/layout/activity_infor.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp-master/app/src/main/res/layout/activity_login.xml" value="0.1793478260869565" />
-        <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp-master/app/src/main/res/layout/activity_register.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp-master/app/src/main/res/layout/activity_smsemail.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp-master/app/src/main/res/layout/activity_smsphone.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp-master/app/src/main/res/layout/activity_splash_screen.xml" value="0.1793478260869565" />
-        <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp-master/app/src/main/res/layout/activity_success_verify.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp-master/app/src/main/res/layout/activity_verify_your_email.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp-master/app/src/main/res/layout/activity_verify_your_phone.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp-master/app/src/main/res/layout/item_store.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp/app/src/main/res/layout/activity_forgot_password.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp/app/src/main/res/layout/activity_infor.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp/app/src/main/res/layout/activity_register.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp/app/src/main/res/layout/activity_smsemail.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp/app/src/main/res/layout/activity_smsphone.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp/app/src/main/res/layout/activity_success_verify.xml" value="0.25416666666666665" />
-        <entry key="..\:/Android_Projects/ThucTap/MarketApp-master/MarketApp/app/src/main/res/layout/activity_verify_your_email.xml" value="0.25416666666666665" />
-        <entry key="..\:/MarketApp/app/src/main/res/layout/activity_infor.xml" value="0.1334853090172239" />
-        <entry key="..\:/MarketApp/app/src/main/res/layout/activity_main.xml" value="0.1334853090172239" />
-        <entry key="..\:/MarketApp/app/src/main/res/layout/activity_my_oder.xml" value="0.1334853090172239" />
+        <entry key="..\:/Android_Projects/ThucTap/Thực_Tập/MarketApp-hieu/MarketApp_B/app/src/main/res/layout/activity_find_store.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android_Projects/ThucTap/Thực_Tập/MarketApp-hieu/MarketApp_B/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android_Projects/ThucTap/Thực_Tập/MarketApp-hieu/MarketApp_B/app/src/main/res/layout/activity_register.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android_Projects/ThucTap/Thực_Tập/MarketApp-hieu/MarketApp_B/app/src/main/res/layout/activity_smsemail.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android_Projects/ThucTap/Thực_Tập/MarketApp-hieu/MarketApp_B/app/src/main/res/layout/item_store.xml" value="0.25416666666666665" />
+        <entry key="..\:/MarketApp/app/src/main/res/drawable/bg_btnproduct.xml" value="0.28615384615384615" />
+        <entry key="..\:/MarketApp/app/src/main/res/drawable/bg_line.xml" value="0.16041666666666668" />
+        <entry key="..\:/MarketApp/app/src/main/res/drawable/bg_tvchitiet.xml" value="0.290625" />
+        <entry key="..\:/MarketApp/app/src/main/res/drawable/shape_bg_search.xml" value="0.28615384615384615" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/activity_all_bill.xml" value="0.2608695652173913" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/activity_detail_bill.xml" value="0.2608695652173913" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/activity_my_oder.xml" value="0.264" />
         <entry key="..\:/MarketApp/app/src/main/res/layout/activity_notifi.xml" value="0.1334853090172239" />
-        <entry key="..\:/MarketApp/app/src/main/res/layout/fragment_account.xml" value="0.4" />
-        <entry key="..\:/MarketApp/app/src/main/res/layout/fragment_favorite.xml" value="0.1334853090172239" />
         <entry key="..\:/MarketApp/app/src/main/res/layout/fragment_home.xml" value="0.1334853090172239" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/fragment_offers.xml" value="0.19429347826086957" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/fragment_shopping.xml" value="0.264" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/item_bill.xml" value="0.264" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/item_my_order.xml" value="0.2608695652173913" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/item_product.xml" value="0.264" />
+        <entry key="..\:/MarketApp/app/src/main/res/layout/item_slide.xml" value="0.26268115942028986" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.13179347826086957" />
         <entry key="app/src/main/res/layout/activity_infor.xml" value="0.14447463768115942" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.16032608695652173" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.14447463768115942" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_smsemail.xml" value="0.1322463768115942" />
@@ -46,7 +37,7 @@
         <entry key="app/src/main/res/layout/activity_verify_your_phone.xml" value="0.13179347826086957" />
         <entry key="app/src/main/res/layout/fragment_account.xml" value="0.13179347826086957" />
         <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.13179347826086957" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.13179347826086957" />
         <entry key="app/src/main/res/layout/fragment_offers.xml" value="0.13179347826086957" />
         <entry key="app/src/main/res/layout/fragment_shopping.xml" value="0.13179347826086957" />
         <entry key="app/src/main/res/menu/navigation_items.xml" value="0.23020833333333332" />

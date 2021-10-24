@@ -1,8 +1,11 @@
 package com.example.marketapp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,12 +27,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        SharedPreferences sharedPref = this.getSharedPreferences("SEND_ID_STORE", Context.MODE_PRIVATE);
+        int idStore = sharedPref.getInt("ID_STORE", 0);
+        Toast.makeText(getApplicationContext(), "" + idStore, Toast.LENGTH_SHORT).show();
+
+
         navigationView = findViewById(R.id.bottom_navigation);
         getSupportFragmentManager().beginTransaction().replace(R.id.body_container, new HomeFragment()).commit();
         navigationView.setSelectedItemId(R.id.nav_home);
-        //
 
-        //
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

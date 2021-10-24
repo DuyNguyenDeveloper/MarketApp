@@ -1,4 +1,5 @@
-package com.example.marketapp.server;
+package com.example.marketapp.service;
+
 
 import com.example.marketapp.models.User;
 

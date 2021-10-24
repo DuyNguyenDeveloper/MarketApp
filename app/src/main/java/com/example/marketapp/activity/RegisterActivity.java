@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,24 +15,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.marketapp.R;
-import com.example.marketapp.models.User;
-import com.example.marketapp.server.Constants;
-import com.example.marketapp.server.RequestInterface;
-import com.example.marketapp.server.ServerRequest;
-import com.example.marketapp.server.ServerResponse;
+import com.example.marketapp.models.ResponseRegister;
+import com.example.marketapp.models.UserRegister;
+import com.example.marketapp.service.CallApi;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RegisterActivity extends AppCompatActivity {
 
     TextView tvSignin;
     ProgressBar progressBar;
-    private EditText edTen,edSDT,edMatKhau,edMatKhauXN;
+    private EditText edEmail, edPassword, edLastName, edFistName, edPhoneNumber, edAddress;
     private Button btRegister;
+
+    String email, password, lastName, firstName, address;
+    int phoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +46,12 @@ public class RegisterActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
         progressBar.setVisibility(View.GONE);
         tvSignin = (TextView) findViewById(R.id.tv_signin);
-        edTen =  findViewById(R.id.et_name);
-        edSDT =  findViewById(R.id.et_phone);
-        edMatKhau =  findViewById(R.id.et_pass);
-        edMatKhauXN =  findViewById(R.id.et_confirm_pass);
+        edEmail = findViewById(R.id.et_email);
+        edPassword = findViewById(R.id.et_pass);
+        edLastName = findViewById(R.id.et_lastName);
+        edFistName = findViewById(R.id.et_fistName);
+        edPhoneNumber = findViewById(R.id.et_phoneNumber);
+        edAddress = findViewById(R.id.et_address);
         btRegister = findViewById(R.id.btn_register);
     }
     private void addClicks() {
@@ -63,72 +66,101 @@ public class RegisterActivity extends AppCompatActivity {
         btRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if(edSDT.getText().toString().isEmpty() || edTen.getText().toString().isEmpty()
-//                        || edMatKhau.getText().toString().isEmpty() || edMatKhauXN.getText().toString().isEmpty()){
-//                    Toast.makeText(getApplicationContext(), "Vui lòng không để trống các trường", Toast.LENGTH_SHORT).show();
-//                }else{
-//                    if(edSDT.getText().toString().length()==10){
-//                        if(edMatKhau.getText().toString().length()<6){
-//                            Toast.makeText(getApplicationContext(), "Mật khẩu từ 6 kí tự trở lên", Toast.LENGTH_SHORT).show();
-//                        }else{
-//                            if(edMatKhau.getText().toString().equals(edMatKhauXN.getText().toString())){
-//                                registerServer();
-//                            }else{
-//                                Toast.makeText(getApplicationContext(), "Mật khẩu xác nhận không khớp", Toast.LENGTH_SHORT).show();
-//                            }
-//                        }
-//                    }else {
-//                        Toast.makeText(getApplicationContext(), "Vui lòng nhập số điện thoại bằng 10", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-
-                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                finish();
+                registerUser();
             }
         });
     }
-    public void registerServer() {
-        //ket noi toi api
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        RequestInterface requestInterface =
-                retrofit.create(RequestInterface.class);
-        //chinh sua user
-        User user = new User();
-        user.setTaiKhoan(edSDT.getText().toString());
-        user.setPassword(edMatKhau.getText().toString());
-        user.setTenNguoiDung(edTen.getText().toString());
-        //thay doi data trong serverrequest
-        ServerRequest request = new ServerRequest();
-        request.setUser(user);
-        //gui va nhan du lieu
-        Call<ServerResponse> response = requestInterface.registerInterface(request);
-        response.enqueue(new Callback<ServerResponse>() {
-            @Override
-            public void onResponse(Call<ServerResponse> call,
-                                   Response<ServerResponse> response) {
-                ServerResponse resp = response.body();
-                // Snackbar.make(getApplicationContext(),"Đăng kí thành công",Snackbar.LENGTH_LONG).show();
-                if (resp.getResult().equals(Constants.SUCCESS)) {
-                    Toast.makeText(getApplicationContext(), "Đăng kí thành công", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                    finish();
-                }else{
-                    Toast.makeText(getApplicationContext(), "Đăng kí thất bại", Toast.LENGTH_SHORT).show();
+
+    private boolean checkValid(){
+        email = edEmail.getText().toString().trim();
+        password = edPassword.getText().toString().trim();
+        lastName = edLastName.getText().toString();
+        firstName = edFistName.getText().toString();
+        try {
+            phoneNumber = Integer.parseInt(edPhoneNumber.getText().toString().trim());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        address = edAddress.getText().toString();
+
+        if (isValidEmail(email)){
+            edEmail.setError("Email không hợp lệ");
+            edEmail.requestFocus();
+            return false;
+        }
+        if (password.length() < 6){
+            edPassword.setError("Mật khẩu phải từ 6 ký tự trở lên");
+            edPassword.requestFocus();
+            return false;
+        }
+        if (lastName.isEmpty()){
+            edLastName.setError("Họ không được để trống");
+            edLastName.requestFocus();
+            return false;
+        }
+        if (firstName.isEmpty()){
+            edFistName.setError("Tên không được để trống");
+            edFistName.requestFocus();
+            return false;
+        }
+        if(String.valueOf(phoneNumber).length() < 9 || String.valueOf(phoneNumber).length() > 14){
+            edPhoneNumber.setError("Số điện thoại không đúng định dạng");
+            edPhoneNumber.requestFocus();
+            return false;
+        }
+        if (address.isEmpty()){
+            edAddress.setError("Địa chỉ không được để trống");
+            edAddress.requestFocus();
+            return false;
+        }
+        return true;
+    }
+
+    private UserRegister getUser(){
+        UserRegister user = new UserRegister();
+        user.setEmail(email);
+        user.setPassword(password);
+        user.setLastName(lastName);
+        user.setFirstName(firstName);
+        user.setPhoneNumber(phoneNumber);
+        user.setAddress(address);
+        return user;
+    }
+
+    private void registerUser() {
+        if (checkValid()){
+            progressBar.setVisibility(View.VISIBLE);
+            CallApi.callApi.postRegister(getUser()).enqueue(new Callback<ResponseRegister>() {
+                @Override
+                public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
+                    progressBar.setVisibility(View.GONE);
+                    if (!response.isSuccessful()){
+                        Toast.makeText(getApplicationContext(), "Response code: " + response.code(), Toast.LENGTH_SHORT).show();
+                    }
+                    try {
+                        Intent intent = new Intent(RegisterActivity.this, SMSEmailActivity.class);
+                        intent.putExtra("EMAIL", email);
+                        startActivity(intent);
+                        finish();
+                        Toast.makeText(getApplicationContext(), "Account successfully created!", Toast.LENGTH_SHORT).show();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                        progressBar.setVisibility(View.GONE);
+                        Toast.makeText(getApplicationContext(), "Login Failed!", Toast.LENGTH_SHORT).show();
+                    }
                 }
-                progressBar.setVisibility(View.INVISIBLE);
-            }
 
-            @Override
-            public void onFailure(Call<ServerResponse> call, Throwable t) {
-                progressBar.setVisibility(View.INVISIBLE);
-                Log.d(Constants.TAG, "failed");
+                @Override
+                public void onFailure(Call<ResponseRegister> call, Throwable t) {
+                    Log.d("ERROR", "" + t.getMessage());
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(getApplicationContext(), "Call Api error!", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
 
-                // Snackbar.make(,t.getMessage(),Snackbar.LENGTH_LONG).show();
-            }
-        });
-
+    public boolean isValidEmail(CharSequence target) {
+        return (TextUtils.isEmpty(target) || !Patterns.EMAIL_ADDRESS.matcher(target).matches());
     }
 }
