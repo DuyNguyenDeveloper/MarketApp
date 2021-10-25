@@ -8,10 +8,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 import com.example.marketapp.R;
+import com.example.marketapp.activity.AllBillActivity;
+import com.example.marketapp.activity.FindStoreActivity;
+import com.example.marketapp.activity.HistoryActivity;
 import com.example.marketapp.activity.InforActivity;
 import com.example.marketapp.activity.LoginActivity;
 
@@ -19,6 +23,8 @@ import com.example.marketapp.activity.LoginActivity;
 public class AccountFragment extends Fragment {
     LinearLayout lnEditProfile;
     Button btnLogout;
+    TextView tvChose, tvAllBill, tvHistory;
+
     public AccountFragment() {
         // Required empty public constructor
     }
@@ -43,16 +49,30 @@ public class AccountFragment extends Fragment {
 
         return view;
     }
-    public void clickSet(){
+
+    public void clickSet() {
         lnEditProfile.setOnClickListener(view -> {
             startActivity(new Intent(getActivity(), InforActivity.class));
         });
         btnLogout.setOnClickListener(view1 -> {
             startActivity(new Intent(getActivity(), LoginActivity.class));
         });
+        tvAllBill.setOnClickListener(view1 -> {
+            startActivity(new Intent(getActivity(), AllBillActivity.class));
+        });
+        tvHistory.setOnClickListener(view1 -> {
+            startActivity(new Intent(getActivity(), HistoryActivity.class));
+        });
+        tvChose.setOnClickListener(view1 -> {
+            startActivity(new Intent(getActivity(), FindStoreActivity.class));
+        });
     }
+
     public void mapView(View view) {
         btnLogout = view.findViewById(R.id.btn_logout);
         lnEditProfile = view.findViewById(R.id.lnEditProfile);
+        tvAllBill = view.findViewById(R.id.tvAllBill);
+        tvHistory = view.findViewById(R.id.tvHistory);
+        tvChose = view.findViewById(R.id.tvChose);
     }
 }

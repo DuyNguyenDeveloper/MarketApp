@@ -35,7 +35,7 @@ import com.example.marketapp.db.SPDaMuaDao;
 import com.example.marketapp.models.Cart;
 import com.example.marketapp.models.DistricAndWard;
 import com.example.marketapp.models.Product;
-import com.example.marketapp.server.Constants;
+import com.example.marketapp.service.Constants;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -83,7 +83,7 @@ public class MyOderActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Không để trông các trường!", Toast.LENGTH_SHORT).show();
                 }else{
                     thanhToan(tvName.getText().toString(),tvPhone.getText().toString(),tvDiaChi.getText().toString(),
-                            tvTo.getText().toString(),vitriDistric,vitriWards,Constants.ID_STORE);
+                            tvTo.getText().toString(),vitriDistric,vitriWards, Constants.ID_STORE);
                 }
             }
         });

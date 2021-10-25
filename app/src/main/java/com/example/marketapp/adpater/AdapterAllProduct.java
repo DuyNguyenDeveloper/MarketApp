@@ -19,7 +19,7 @@ import com.example.marketapp.db.SPDao;
 import com.example.marketapp.models.ListImageGroupProduct;
 import com.example.marketapp.models.Product;
 import com.example.marketapp.models.StoreProduct;
-import com.example.marketapp.server.VolleyCart;
+import com.example.marketapp.service.VolleyCart;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

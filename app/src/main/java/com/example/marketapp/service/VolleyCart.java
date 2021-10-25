@@ -1,4 +1,4 @@
-package com.example.marketapp.server;
+package com.example.marketapp.service;
 
 import android.content.Context;
 import android.util.Log;
