@@ -7,7 +7,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
 import com.example.marketapp.R;
+import com.example.marketapp.adpater.FavoriteProduct;
+import com.example.marketapp.db.SPDao;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,8 +19,10 @@ import com.example.marketapp.R;
  * create an instance of this fragment.
  */
 public class FavoriteFragment extends Fragment {
+   public static ListView listView;
+    SPDao dao;
+    FavoriteProduct adapter;
     public FavoriteFragment() {
-        // Required empty public constructor
     }
 
     /**
@@ -38,14 +44,17 @@ public class FavoriteFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favorite, container, false);
+        View view = inflater.inflate(R.layout.fragment_favorite, container, false);
+        listView= view.findViewById(R.id.lvFavorite);
+        dao = new SPDao(getContext());
+        adapter = new FavoriteProduct(getContext(),dao.getAll());
+        listView.setAdapter(adapter);
+        return view;
     }
 }

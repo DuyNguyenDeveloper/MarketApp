@@ -93,6 +93,12 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <ListView
+                    android:id="@+id/lvFavorite"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="8dp"
+                    tools:dividerHeight="5dp" />
             </LinearLayout>
     </LinearLayout>
 

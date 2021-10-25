@@ -3,11 +3,13 @@ package com.example.marketapp.server;
 import android.content.Context;
 import android.util.Log;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.marketapp.MainActivity;
 import com.example.marketapp.models.Product;
@@ -19,6 +21,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class VolleyProduct {
     RequestQueue requestQueue;
@@ -30,11 +34,13 @@ public class VolleyProduct {
     }
 
     public void getAllProductStore() {
+        String url = Constants.BASE_URL_GET_ALL_PRODUCT_BY_IDSTORE+"site_code="+Constants.ID_STORE;
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-                (Request.Method.GET, Constants.BASE_URL_GET_ALL_PRODUCT_BY_IDSTORE, null, new Response.Listener<JSONObject>() {
+                (Request.Method.GET,url, null, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
+                        Log.e("vp", response.toString());
                         JSONArray jsonStores = null;
                         try {
                             jsonStores = response.getJSONArray("getStore");
@@ -75,8 +81,7 @@ public class VolleyProduct {
                             }
                             stores.setStoreProduct(storeProducts);
                             MainActivity.store = stores;
-                            Log.e("testFN",MainActivity.store.toString());
-                            Log.e("testFN",MainActivity.store.getStoreProduct().size()+"");
+                            Log.e("",MainActivity.store.toString());
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -88,7 +93,18 @@ public class VolleyProduct {
                         // TODO: Handle error
 
                     }
-                });
+                }) {
+            //send token
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/json; charset=UTF-8");
+                params.put("Authorization", "Bearer " + Constants.ACCESS_TOKEN);
+                return params;
+            }
+        };
         requestQueue.add(jsonObjectRequest);
     }
+
+
 }

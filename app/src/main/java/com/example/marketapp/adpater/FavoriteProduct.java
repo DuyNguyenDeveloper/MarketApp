@@ -1,10 +1,6 @@
 package com.example.marketapp.adpater;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +8,11 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.marketapp.MainActivity;
 import com.example.marketapp.R;
 import com.example.marketapp.db.SPDao;
+import com.example.marketapp.fragment.FavoriteFragment;
 import com.example.marketapp.models.ListImageGroupProduct;
 import com.example.marketapp.models.Product;
 import com.example.marketapp.models.StoreProduct;
@@ -27,21 +24,21 @@ import java.util.ArrayList;
 /**
  * Created by Han on 29/12/2016.
  */
-public class AdapterAllProduct extends BaseAdapter {
+public class FavoriteProduct extends BaseAdapter {
     Context context;
-    ArrayList<StoreProduct> listProducts;
-    public AdapterAllProduct(Context context, ArrayList<StoreProduct> listProducts)
+    ArrayList<Product> product;
+    public FavoriteProduct(Context context, ArrayList<Product> product)
     {
         this.context = context;
-        this.listProducts = listProducts;
+        this.product = product;
     }
     @Override
     public int getCount() {
-        return listProducts.size();
+        return product.size();
     }
     @Override
     public Object getItem(int i) {
-        return listProducts.get(i);
+        return product.get(i);
     }
     @Override
     public long getItemId(int i) {
@@ -69,28 +66,22 @@ public class AdapterAllProduct extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder)view.getTag();
         }
-        StoreProduct product = listProducts.get(i);
-        viewHolder.tvName.setText(product.getProducts().getP_name());
-        viewHolder.tvPrice.setText(product.getProducts().getP_price());
-        viewHolder.btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                VolleyCart volleyCart = new VolleyCart(context);
-                volleyCart.addCart(product.getProducts().getId());
-                Toast.makeText(context, "Thêm thành công!", Toast.LENGTH_SHORT).show();
-            }
-        });
+        Product obj = product.get(i);
+        viewHolder.tvName.setText(obj.getP_name());
+        viewHolder.tvPrice.setText(obj.getP_price());
+        viewHolder.btnAdd.setVisibility(View.INVISIBLE);
         viewHolder.imgFavorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SPDao dao = new SPDao(context);
-                dao.add(product.getProducts());
-                Toast.makeText(context, "Đã thêm vào mục yêu thích!", Toast.LENGTH_SHORT).show();
+                dao.del(obj.getId());
+                FavoriteProduct adapter = new FavoriteProduct(context,dao.getAll());
+                FavoriteFragment.listView.setAdapter(adapter);
             }
         });
         ListImageGroupProduct listImageGroupProduct = new ListImageGroupProduct();
         Picasso.get()
-                .load(listImageGroupProduct.getUrlImg(Integer.parseInt(product.getProducts().getId_group())))
+                .load(listImageGroupProduct.getUrlImg(Integer.parseInt(obj.getId_group())))
                 .placeholder(R.drawable.back_ground)
                 .resize(50,50)
                 .into(viewHolder.img);
