@@ -1,13 +1,12 @@
 package com.example.marketapp.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.marketapp.MainActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.marketapp.R;
 
 public class SuccessVerifyActivity extends AppCompatActivity {
@@ -23,7 +22,7 @@ public class SuccessVerifyActivity extends AppCompatActivity {
         btnSuccess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SuccessVerifyActivity.this, MainActivity.class));
+                startActivity(new Intent(SuccessVerifyActivity.this, LoginActivity.class));
                 finish();
             }
         });

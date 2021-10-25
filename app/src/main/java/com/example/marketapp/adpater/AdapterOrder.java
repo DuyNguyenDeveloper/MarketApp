@@ -14,8 +14,8 @@ import com.example.marketapp.R;
 import com.example.marketapp.activity.MyOderActivity;
 import com.example.marketapp.models.Cart;
 import com.example.marketapp.models.StoreProduct;
-import com.example.marketapp.server.Constants;
-import com.example.marketapp.server.VolleyCart;
+import com.example.marketapp.service.Constants;
+import com.example.marketapp.service.VolleyCart;
 
 import java.util.ArrayList;
 

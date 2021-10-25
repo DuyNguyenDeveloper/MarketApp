@@ -16,7 +16,6 @@ import com.example.marketapp.fragment.FavoriteFragment;
 import com.example.marketapp.models.ListImageGroupProduct;
 import com.example.marketapp.models.Product;
 import com.example.marketapp.models.StoreProduct;
-import com.example.marketapp.server.VolleyCart;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
