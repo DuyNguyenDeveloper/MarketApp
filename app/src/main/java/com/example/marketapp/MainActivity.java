@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         SharedPreferences sharedPreferences = getSharedPreferences("LoginActivity", Context.MODE_PRIVATE);
-        Constants.ACCESS_TOKEN = sharedPreferences.getString("token","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9zaWV1dGhpLmNucHQudm5cL2FwaVwvbG9naW4iLCJpYXQiOjE2MzUxNTQwMDMsImV4cCI6MTYzNTE1NzYwMywibmJmIjoxNjM1MTU0MDAzLCJqdGkiOiJkZ1JlR3U3dGg0SnloRFRNIiwic3ViIjozMCwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9._o3VLnGbQFXFUA7VrWWZZBzbHrPTvld1lpnt-ITPc0U");
-        Constants.ID_STORE = sharedPreferences.getString("ID_STORE","");
+        Constants.ACCESS_TOKEN = sharedPreferences.getString("token","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9zaWV1dGhpLmNucHQudm5cL2FwaVwvbG9naW4iLCJpYXQiOjE2MzUxNTgyNjcsImV4cCI6MTYzNTE2MTg2NywibmJmIjoxNjM1MTU4MjY3LCJqdGkiOiJ0VWVvSUwwYTM2MXpQZlhIIiwic3ViIjozMCwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.oB0jKhWT0skoxlJmyeefRyuhWl3QiLOohS188sXILZY");
+        Constants.ID_STORE = sharedPreferences.getString("ID_STORE","3801");
         Log.e("token",Constants.ACCESS_TOKEN);
         Log.e("ID_STORE",Constants.ID_STORE);
         VolleyProduct volleyProduct = new VolleyProduct(this);
