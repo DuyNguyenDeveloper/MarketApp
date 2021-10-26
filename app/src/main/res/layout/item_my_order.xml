@@ -28,13 +28,21 @@
             android:gravity="center_vertical"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="tên sản phẩm"
-                android:textSize="16dp"
-                android:textStyle="bold" />
+           <androidx.constraintlayout.widget.ConstraintLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+
+               <TextView
+                   android:id="@+id/tvName"
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:text="tên sản phẩm"
+                   android:textSize="16dp"
+                   android:textStyle="bold"
+                   app:layout_constraintEnd_toEndOf="parent"
+                   app:layout_constraintStart_toStartOf="parent"
+                   app:layout_constraintTop_toTopOf="parent" />
+           </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/tvPrice"
@@ -54,24 +62,24 @@
                     android:textStyle="bold"
                     android:textSize="16dp"/>
 
+                <ImageView
+                    android:id="@+id/imgUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/ic_add" />
+
                 <TextView
                     android:id="@+id/tvSL"
-                    android:layout_width="20dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
                     android:textSize="16dp"
                     android:textStyle="bold"/>
 
                 <ImageView
-                    android:id="@+id/imgUp"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/ic_add" />
-
-                <ImageView
                     android:id="@+id/imgDown"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:scaleType="fitXY"
                     app:srcCompat="@drawable/ic_rule" />
 
@@ -79,7 +87,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
@@ -87,8 +95,8 @@
 
             <ImageView
                 android:id="@+id/ivDelete"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/icons8_delete_bin_50px_1" />
         </LinearLayout>
     </LinearLayout>

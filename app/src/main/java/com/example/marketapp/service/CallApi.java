@@ -16,11 +16,11 @@ import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface CallApi {
-
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
     CallApi callApi = new Retrofit.Builder()
@@ -39,6 +39,8 @@ public interface CallApi {
             @Field("email") String email,
             @Field("password") String password
     );
+    @POST("api/updateUser")
+    Call<ResponseRegister> postUpdateUser(@Body UserRegister user,@Header("Authorization") String token);
 
     @FormUrlEncoded
     @POST("api/activeEmail")

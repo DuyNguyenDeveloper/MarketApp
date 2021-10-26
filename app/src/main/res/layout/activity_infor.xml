@@ -40,39 +40,41 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Cá nhân"
-            android:textStyle="bold"
             android:textColor="#333333"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/tvTaiKhoan"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="8dp"
-            android:textColor="#2196F3"
             android:background="@drawable/bg_edtinfo"
             android:gravity="center_vertical"
             android:hint="Tài khoản"
             android:inputType="text"
-            android:paddingStart="5dp" />
+            android:paddingStart="5dp"
+            android:textColor="#2196F3" />
+
         <EditText
-            android:id="@+id/edtName"
+            android:id="@+id/edtLastName"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/bg_edtinfo"
             android:gravity="center_vertical"
-            android:hint="Họ và tên"
+            android:hint="Tên"
             android:inputType="text"
             android:paddingStart="5dp" />
 
         <EditText
-            android:id="@+id/edtBirthDay"
+            android:id="@+id/edtFirstName"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/bg_edtinfo"
             android:gravity="center_vertical"
-            android:hint="Ngày sinh"
+            android:hint="Họ"
             android:inputType="text"
             android:paddingStart="5dp" />
 
@@ -81,20 +83,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="Địa chỉ"
-            android:textStyle="bold"
             android:textColor="#333333"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/edtEmail"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/bg_edtinfo"
-            android:gravity="center_vertical"
-            android:hint="Email"
-            android:inputType="text"
-            android:paddingStart="5dp" />
 
         <EditText
             android:id="@+id/edtPhoneN"
@@ -124,8 +116,8 @@
             android:layout_marginTop="8dp"
             android:text="Mật khẩu"
             android:textColor="#333333"
-            android:textStyle="bold"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvCp"
@@ -136,8 +128,8 @@
             android:gravity="center_vertical"
             android:paddingStart="5dp"
             android:text="Đổi mật khẩu"
-            android:textSize="16dp"
-            android:textColor="#2196F3" />
+            android:textColor="#2196F3"
+            android:textSize="16dp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnUpdateInfor"
