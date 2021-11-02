@@ -45,6 +45,8 @@ public class FindStoreActivity extends AppCompatActivity implements RecyclerView
     ImageView ivSearch;
     LinearLayoutManager linearLayoutManager;
 
+    String token;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +57,8 @@ public class FindStoreActivity extends AppCompatActivity implements RecyclerView
 
         storeList = new ArrayList<StoreM>();
 
+        getTokenUser();
+
         loadDataApi();
 
         linearLayoutManager = new LinearLayoutManager(FindStoreActivity.this);
@@ -62,10 +66,12 @@ public class FindStoreActivity extends AppCompatActivity implements RecyclerView
 
         findStore();
     }
+    private void getTokenUser() {
+        SharedPreferences sharedPref = FindStoreActivity.this.getSharedPreferences("SEND_TOKEN", Context.MODE_PRIVATE);
+        token = sharedPref.getString("TOKEN", "");
+    }
 
     private void loadDataApi() {
-        Intent intent = getIntent();
-        String token = intent.getStringExtra("TOKEN");
         CallApi.callApi.getAllStore(token).enqueue(new Callback<GetStoreF>() {
             @Override
             public void onResponse(Call<GetStoreF> call, Response<GetStoreF> response) {

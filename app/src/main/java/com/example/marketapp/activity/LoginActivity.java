@@ -103,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
                     LoginResponse loginResponse = response.body();
                     String token = loginResponse.getToken();
                     Intent intent = new Intent(LoginActivity.this, FindStoreActivity.class);
-                    intent.putExtra("TOKEN", token);
+                    writeToken(token);
                     Constants.ACCESS_TOKEN=token;
                     Log.e("Login ",Constants.ACCESS_TOKEN);
                     startActivity(intent);
@@ -123,6 +123,13 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Call Api error!", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void writeToken(String token) {
+        SharedPreferences sharedPref = LoginActivity.this.getSharedPreferences("SEND_TOKEN", LoginActivity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("TOKEN", token);
+        editor.commit();
     }
 
     public boolean isValidEmail(CharSequence target) {
