@@ -8,6 +8,8 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.marketapp.MainActivity;
 import com.example.marketapp.R;
 import com.example.marketapp.models.LoginResponse;
 import com.example.marketapp.service.CallApi;
@@ -31,11 +34,42 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
     private EditText edEmail, edPassword;
     private SharedPreferences pref;
-
+    CheckBox remember;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        SharedPreferences preferences = getSharedPreferences("checkbox",MODE_PRIVATE);
+        String checkbox = preferences.getString("remember","");
+
+        if(checkbox.equals("true")){
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        }else if(checkbox.equals("false")){
+            Toast.makeText(this,"Please Sign In",Toast.LENGTH_SHORT).show();
+        }
+
+        remember = findViewById(R.id.rememberMe);
+
+        remember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(compoundButton.isChecked()){
+                    SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("remember","true");
+                    editor.apply();
+                    Toast.makeText(LoginActivity.this,"Checked",Toast.LENGTH_SHORT).show();
+                }else if(!compoundButton.isChecked()){
+                    SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("remember","false");
+                    editor.apply();
+                    Toast.makeText(LoginActivity.this,"Unchecked",Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
 
         tvForgot = (TextView) findViewById(R.id.tv_forgot);
 
