@@ -50,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
 
         remember = findViewById(R.id.rememberMe);
 
+
         remember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
