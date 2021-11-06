@@ -30,6 +30,6 @@ public class Constants {
     public static final String BASE_URL_ORDER = "http://sieuthi.cnpt.vn/api/order?";
 
 
-    public static String ACCESS_TOKEN ="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9zaWV1dGhpLmNucHQudm5cL2FwaVwvbG9naW4iLCJpYXQiOjE2MzUwMzk0NTUsImV4cCI6MTYzNTA0MzA1NSwibmJmIjoxNjM1MDM5NDU1LCJqdGkiOiJoSjV2QnEwTzVnekZMamNMIiwic3ViIjozMCwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.POkx3Zq5zaPxErnTpELyDrPYD2Wst7d-Jc1CxInsJvE";
+    public static String ACCESS_TOKEN ="";
     public static String ID_STORE = "";
 }

@@ -12,24 +12,22 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.marketapp.R;
-import com.example.marketapp.models.User;
+import com.example.marketapp.models.ResponseRegister;
+import com.example.marketapp.models.UserRegister;
 import com.example.marketapp.service.CallApi;
 import com.example.marketapp.service.Constants;
-import com.example.marketapp.service.ServerRequest;
-import com.example.marketapp.service.ServerResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class InforActivity extends AppCompatActivity {
-    EditText edtName, edtBd, edtEmail, edtNumberP, edtAddress;
+    EditText edtLastname, edtFirstName, edtNumberP, edtAddress;
     Button btnUpdate;
     ImageView ivBack;
     TextView tvCp, tvTaiKhoan;
-    String tk;
+    String tk, lastName, firstName, address;
+    int numberPhone;
     private SharedPreferences pref;
 
     @Override
@@ -47,9 +45,8 @@ public class InforActivity extends AppCompatActivity {
     }
 
     public void mapView() {
-        edtName = findViewById(R.id.edtName);
-        edtBd = findViewById(R.id.edtBirthDay);
-        edtEmail = findViewById(R.id.edtEmail);
+        edtLastname = findViewById(R.id.edtLastName);
+        edtFirstName = findViewById(R.id.edtFirstName);
         edtNumberP = findViewById(R.id.edtPhoneN);
         edtAddress = findViewById(R.id.edtAddress);
         btnUpdate = findViewById(R.id.btnUpdateInfor);
@@ -57,51 +54,85 @@ public class InforActivity extends AppCompatActivity {
         tvCp = findViewById(R.id.tvCp);
         tvTaiKhoan = findViewById(R.id.tvTaiKhoan);
         tk = getIntent().getStringExtra("TK");
+        pref = getPreferences(0);
+        String email = pref.getString("email", "");
+        tvTaiKhoan.setText(email);
+    }
+
+    private boolean checkValid() {
+        lastName = edtLastname.getText().toString().trim();
+        firstName = edtFirstName.getText().toString().trim();
+        try {
+            numberPhone = Integer.parseInt(edtNumberP.getText().toString().trim());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        address = edtAddress.getText().toString().trim();
+        if (lastName.isEmpty()) {
+            edtLastname.setError("Họ không được để trống");
+            edtLastname.requestFocus();
+            return false;
+        }
+        if (firstName.isEmpty()) {
+            edtFirstName.setError("Tên không được để trống");
+            edtFirstName.requestFocus();
+            return false;
+        }
+        if (String.valueOf(numberPhone).length() < 9 || String.valueOf(numberPhone).length() > 14) {
+            edtNumberP.setError("Số điện thoại không đúng định dạng");
+            edtNumberP.requestFocus();
+            return false;
+        }
+        if (address.isEmpty()) {
+            edtAddress.setError("Địa chỉ không được để trống");
+            edtAddress.requestFocus();
+            return false;
+        }
+        return true;
+    }
+
+    private UserRegister getUser() {
+        UserRegister user = new UserRegister();
+        user.setLastName(lastName);
+        user.setFirstName(firstName);
+        user.setPhoneNumber(numberPhone);
+        user.setAddress(address);
+        return user;
     }
 
     public void updateServer() {
-        Retrofit retrofit = new Retrofit.Builder().baseUrl(Constants.BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
-        CallApi requestInterface = retrofit.create(CallApi.class);
-        User user = new User();
-        user.setTaiKhoan(tk);
-        user.setTenNguoiDung(edtName.getText().toString());
-        user.setNgaySinh(edtBd.getText().toString());
-        user.setEmail(edtEmail.getText().toString());
-        user.setSdt(edtNumberP.getText().toString());
-        user.setDiaChi(edtAddress.getText().toString());
-        ServerRequest request = new ServerRequest();
-        request.setUser(user);
-        Call<ServerResponse> response = requestInterface.updateInterface(request);
-        response.enqueue(new Callback<ServerResponse>() {
-            @Override
-            public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
-                ServerResponse resp = response.body();
-//                Log.e("ia82", resp.getResult());
-                if (resp.getResult().equals(Constants.SUCCESS)) {
-                    SharedPreferences.Editor editor = pref.edit();
-                    editor.putString(Constants.TEN, resp.getUser().getTenNguoiDung());
-                    editor.putString(Constants.NGAYSINH, resp.getUser().getNgaySinh());
-                    editor.putString(Constants.EMAIL, resp.getUser().getEmail());
-                    editor.putString(Constants.SDT, resp.getUser().getSdt());
-                    editor.putString(Constants.DIACHI, resp.getUser().getDiaChi());
-                    Toast.makeText(getApplicationContext(), "Cập nhật thành công", Toast.LENGTH_SHORT).show();
 
-                } else {
-                    Toast.makeText(getApplicationContext(), "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
+        if (checkValid()) {
+            CallApi.callApi.postUpdateUser(getUser(),"Bearer "+Constants.ACCESS_TOKEN).enqueue(new Callback<ResponseRegister>() {
+                @Override
+                public void onResponse(Call<ResponseRegister> call, Response<ResponseRegister> response) {
+
+                    if (!response.isSuccessful()){
+                        Toast.makeText(getApplicationContext(), "Response code: " + response.code(), Toast.LENGTH_SHORT).show();
+                    }
+                    try {
+//                        finish();
+                        if(response.body().getMessage().equals("Update successful!")){
+                            Toast.makeText(getApplicationContext(), "Account successfully updated!", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(getApplicationContext(), "Account failed updated!", Toast.LENGTH_SHORT).show();
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                        Toast.makeText(getApplicationContext(), "Update Failed!", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
-            }
-
-            @Override
-            public void onFailure(Call<ServerResponse> call, Throwable t) {
-                Log.d(Constants.TAG, "failed");
-            }
-        });
+                @Override
+                public void onFailure(Call<ResponseRegister> call, Throwable t) {
+                    Log.d("ERROR", "" + t.getMessage());
+                    Toast.makeText(getApplicationContext(), "Call Api error!", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     public void showDataUser() {
-        tvTaiKhoan.setText(tk);
-        pref = getPreferences(0);
 
 
     }
