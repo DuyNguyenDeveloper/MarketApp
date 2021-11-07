@@ -1,6 +1,7 @@
 package com.example.marketapp.fragment;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,6 +56,10 @@ public class AccountFragment extends Fragment {
             startActivity(new Intent(getActivity(), InforActivity.class));
         });
         btnLogout.setOnClickListener(view1 -> {
+                SharedPreferences sharedPref = getActivity().getSharedPreferences("checkbox", LoginActivity.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+                editor.putString("remember", "false");
+                editor.commit();
             startActivity(new Intent(getActivity(), LoginActivity.class));
         });
         tvAllBill.setOnClickListener(view1 -> {

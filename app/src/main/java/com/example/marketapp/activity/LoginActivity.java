@@ -40,13 +40,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         SharedPreferences preferences = getSharedPreferences("checkbox",MODE_PRIVATE);
+        SharedPreferences preferences2 = getSharedPreferences("SEND_TOKEN",MODE_PRIVATE);
         String checkbox = preferences.getString("remember","");
+        String email = preferences2.getString("EMAIL","");
+        String password = preferences2.getString("PASSWORD","");
 
-        if(checkbox.equals("true")){
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        }else if(checkbox.equals("false")){
-            Toast.makeText(this,"Please Sign In",Toast.LENGTH_SHORT).show();
-        }
+
 
         remember = findViewById(R.id.rememberMe);
 
@@ -84,6 +83,14 @@ public class LoginActivity extends AppCompatActivity {
 
         initViews();
         addClicks();
+        if(checkbox.equals("true")){
+            if(!email.equals("")){
+                postLogin(email,password);
+//                Intent intent = new Intent(LoginActivity.this, FindStoreActivity.class);
+            }
+        }else if(checkbox.equals("false")){
+            Toast.makeText(this,"Please Sign In",Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void initViews() {
@@ -107,16 +114,17 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                postLogin();
+
+                String email = edEmail.getText().toString();
+                String password = edPassword.getText().toString();
+                postLogin(email,password);
 //                startActivity(new Intent(LoginActivity.this, FindStoreActivity.class));
 //                finish();
             }
         });
     }
 
-    private void postLogin() {
-        String email = edEmail.getText().toString();
-        String password = edPassword.getText().toString();
+    private void postLogin(String email,String password) {
         if (isValidEmail(email)){
             edEmail.setError("Email không hợp lệ");
             edEmail.requestFocus();
@@ -138,7 +146,7 @@ public class LoginActivity extends AppCompatActivity {
                     LoginResponse loginResponse = response.body();
                     String token = loginResponse.getToken();
                     Intent intent = new Intent(LoginActivity.this, FindStoreActivity.class);
-                    writeToken(token);
+                    writeToken(token,email,password);
                     Constants.ACCESS_TOKEN=token;
                     Log.e("Login ",Constants.ACCESS_TOKEN);
                     startActivity(intent);
@@ -160,10 +168,12 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void writeToken(String token) {
+    private void writeToken(String token,String email,String password) {
         SharedPreferences sharedPref = LoginActivity.this.getSharedPreferences("SEND_TOKEN", LoginActivity.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("TOKEN", token);
+        editor.putString("EMAIL", email);
+        editor.putString("PASSWORD", password);
         editor.commit();
     }
 
