@@ -60,25 +60,29 @@ public class FindOderLocationActivity extends FragmentActivity implements OnMapR
             @Override
             public boolean onQueryTextSubmit(String query) {
                 location = searchView.getQuery().toString();
-                if (location != null || !location.equals("")){
-                    Geocoder geocoder = new Geocoder(FindOderLocationActivity.this);
-                    try {
-                        addressList = geocoder.getFromLocationName(location, 1);
-                        Log.d("LOCATION1", addressList.toString());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        Log.d("LOCATION2", e.getMessage());
+                try {
+                    if (location != null || !location.equals("")){
+                        Geocoder geocoder = new Geocoder(FindOderLocationActivity.this);
+                        try {
+                            addressList = geocoder.getFromLocationName(location, 1);
+                            Log.d("LOCATION1", addressList.toString());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            Log.d("LOCATION2", e.getMessage());
+                        }
+                        Address address = addressList.get(0);
+                        latitude1 = address.getLatitude();
+                        longitude1 = address.getLongitude();
+                        onLocationChanged(latitude1, longitude1);
+                        Log.d("LOCATION", "Address: " + location + " " + "Latitude " + latitude1 + " " + "Longitude " + longitude1);
+                        LatLng latLng = new LatLng(latitude1, longitude1);
+                        marker = googleMapF.addMarker(new MarkerOptions().position(latLng).title(location));
+                        googleMapF.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
                     }
-                    Address address = addressList.get(0);
-                    latitude1 = address.getLatitude();
-                    longitude1 = address.getLongitude();
-                    onLocationChanged(latitude1, longitude1);
-                    Log.d("LOCATION", "Address: " + location + " " + "Latitude " + latitude1 + " " + "Longitude " + longitude1);
-                    LatLng latLng = new LatLng(latitude1, longitude1);
-                    marker = googleMapF.addMarker(new MarkerOptions().position(latLng).title(location));
-                    googleMapF.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+                    addressList.clear();
+                }catch (Exception ex){
+                    ex.printStackTrace();
                 }
-                addressList.clear();
                 return false;
             }
 
