@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MarketApp</string>
+    <string name="key_map">AIzaSyDo03-K76yOeKrELws3I_nFnffWQIN8gk8</string>
+    <string name="title_1">Chúc mừng bạn đã xác nhận thành.</string>
+    <string name="title_2">Đừng quên rằng bạn có thể thay đổi thông tin người  ở mục thông tin cá nhân.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
