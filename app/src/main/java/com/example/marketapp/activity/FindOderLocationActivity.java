@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -20,6 +21,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
@@ -36,6 +38,7 @@ public class FindOderLocationActivity extends FragmentActivity implements OnMapR
     List<Address> addressList = null;
     Geocoder geocoder;
     List<Address> temp;
+    Marker marker;
 
     String location;
     String selectedAddress;
@@ -71,7 +74,7 @@ public class FindOderLocationActivity extends FragmentActivity implements OnMapR
                     longitude1 = address.getLongitude();
                     Log.d("LOCATION", "Address: " + location + " " + "Latitude" + latitude1 + " " + "Longitude" + longitude1);
                     LatLng latLng = new LatLng(latitude1, longitude1);
-                    googleMapF.addMarker(new MarkerOptions().position(latLng).title(location));
+                    marker = googleMapF.addMarker(new MarkerOptions().position(latLng).title(location));
                     googleMapF.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
                 }
                 addressList.clear();
@@ -118,7 +121,6 @@ public class FindOderLocationActivity extends FragmentActivity implements OnMapR
         googleMapF = googleMap;
 
         LatLng latLng = new LatLng(latitude1, longitude1);
-        googleMapF.addMarker(new MarkerOptions().position(latLng).title("Da Nang"));
         googleMapF.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
 
         googleMapF.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
@@ -126,7 +128,9 @@ public class FindOderLocationActivity extends FragmentActivity implements OnMapR
             public void onMapClick(@NonNull LatLng latLng) {
                 latitude1 = latLng.latitude;
                 longitude1 = latLng.longitude;
+                onLocationChanged(latitude1, longitude1);
                 getAddress(latitude1, longitude1);
+                Log.d("LOCATION", "Address: " + location + " " + "Latitude" + latitude1 + " " + "Longitude" + longitude1);
             }
         });
     }
@@ -150,7 +154,8 @@ public class FindOderLocationActivity extends FragmentActivity implements OnMapR
 
                     options.position(latLng2).title(selectedAddress);
 
-                    googleMapF.addMarker(options).showInfoWindow();
+                    marker = googleMapF.addMarker(options);
+                    marker.showInfoWindow();
                 }else{
                     Toast.makeText(FindOderLocationActivity.this, "ERROR Clicked Location", Toast.LENGTH_SHORT).show();
                 }
@@ -159,6 +164,14 @@ public class FindOderLocationActivity extends FragmentActivity implements OnMapR
             }
         }else{
             Toast.makeText(FindOderLocationActivity.this, "Please Clicked Location", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void onLocationChanged(double mLat2, double mLot2) {
+        LatLng myActualLocation = new LatLng(mLat2, mLot2);
+
+        if (marker != null){
+            marker.remove();
         }
     }
 }
