@@ -72,7 +72,8 @@ public class FindOderLocationActivity extends FragmentActivity implements OnMapR
                     Address address = addressList.get(0);
                     latitude1 = address.getLatitude();
                     longitude1 = address.getLongitude();
-                    Log.d("LOCATION", "Address: " + location + " " + "Latitude" + latitude1 + " " + "Longitude" + longitude1);
+                    onLocationChanged(latitude1, longitude1);
+                    Log.d("LOCATION", "Address: " + location + " " + "Latitude " + latitude1 + " " + "Longitude " + longitude1);
                     LatLng latLng = new LatLng(latitude1, longitude1);
                     marker = googleMapF.addMarker(new MarkerOptions().position(latLng).title(location));
                     googleMapF.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
@@ -84,35 +85,36 @@ public class FindOderLocationActivity extends FragmentActivity implements OnMapR
             @Override
             public boolean onQueryTextChange(String newText) {
                 location = searchView.getQuery().toString();
-                filter(location);
+//                filter(location);
                 return false;
             }
         });
         supportMapFragment.getMapAsync(this);
     }
 
-    private void filter(String text) {
-        temp = new ArrayList();
-        geocoder = new Geocoder(FindOderLocationActivity.this);
-        try {
-            addressList = geocoder.getFromLocationName(text, 1);
-            Log.d("LOCATION1", addressList.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-            Log.d("LOCATION2", e.getMessage());
-        }
-        for (Address d : addressList) {
-            if (d.getFeatureName().contains(text)) {
-                latitude1 = d.getLatitude();
-                longitude1 = d.getLongitude();
-                temp.add(d);
-            }
-        }
-        LatLng latLng = new LatLng(latitude1, longitude1);
-        googleMapF.addMarker(new MarkerOptions().position(latLng).title(text));
-        googleMapF.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
-        temp.clear();
-    }
+//    private void filter(String text) {
+//        temp = new ArrayList();
+//        geocoder = new Geocoder(FindOderLocationActivity.this);
+//        try {
+//            addressList = geocoder.getFromLocationName(text, 1);
+//            Log.d("LOCATION1", addressList.toString());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            Log.d("LOCATION2", e.getMessage());
+//        }
+//        for (Address d : addressList) {
+//            if (d.getFeatureName().contains(text)) {
+//                latitude1 = d.getLatitude();
+//                longitude1 = d.getLongitude();
+//                temp.add(d);
+//            }
+//        }
+//        onLocationChanged(latitude1, longitude1);
+//        LatLng latLng = new LatLng(latitude1, longitude1);
+//        googleMapF.addMarker(new MarkerOptions().position(latLng).title(text));
+//        googleMapF.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+//        temp.clear();
+//    }
 
 
 
@@ -130,7 +132,7 @@ public class FindOderLocationActivity extends FragmentActivity implements OnMapR
                 longitude1 = latLng.longitude;
                 onLocationChanged(latitude1, longitude1);
                 getAddress(latitude1, longitude1);
-                Log.d("LOCATION", "Address: " + location + " " + "Latitude" + latitude1 + " " + "Longitude" + longitude1);
+                Log.d("LOCATION", "Address: " + location + " " + "Latitude " + latitude1 + " " + "Longitude " + longitude1);
             }
         });
     }
