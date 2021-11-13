@@ -238,6 +238,14 @@
                     android:textAllCaps="true"
                     android:textStyle="bold"
                     android:textSize="20dp"/>
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="getMap"
+                    app:srcCompat="@drawable/ic_map" />
+
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatButton
