@@ -88,7 +88,7 @@ public class FindOderLocationActivity extends FragmentActivity implements OnMapR
             @Override
             public boolean onQueryTextChange(String newText) {
                 location = searchView.getQuery().toString();
-                filter(location);
+//                filter(location);
                 return false;
             }
         });
