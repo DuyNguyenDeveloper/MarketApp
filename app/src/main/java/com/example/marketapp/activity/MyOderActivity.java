@@ -35,7 +35,10 @@ import com.example.marketapp.db.SPDaMuaDao;
 import com.example.marketapp.models.Cart;
 import com.example.marketapp.models.DistricAndWard;
 import com.example.marketapp.models.Product;
+import com.example.marketapp.service.CallApi;
 import com.example.marketapp.service.Constants;
+import com.example.marketapp.service.MessageResponse;
+import com.example.marketapp.service.RequestGomDon;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,6 +47,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
 
 public class MyOderActivity extends AppCompatActivity {
     public static ListView rcvOrder;
@@ -59,6 +65,11 @@ public class MyOderActivity extends AppCompatActivity {
     public ArrayList<DistricAndWard.Ward> wards;
     public int vitriDistric = 0, vitriWards = 0;
 
+    //chua tra ve id
+    public  String idBill= "billtest";
+    //chua co location cuah ang
+    public static String locationStore="16.083418,108.149660";
+    public static String locationOrder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,8 +94,15 @@ public class MyOderActivity extends AppCompatActivity {
                         tvTo.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(), "Không để trông các trường!", Toast.LENGTH_SHORT).show();
                 } else {
-                    thanhToan(tvName.getText().toString(), tvPhone.getText().toString(), tvDiaChi.getText().toString(),
-                            tvTo.getText().toString(), vitriDistric, vitriWards, Constants.ID_STORE);
+                    if(locationOrder==null){
+
+                        Toast.makeText(getApplicationContext(), "Vui lòng chọn vị trí", Toast.LENGTH_SHORT).show();
+                    }else {
+
+                        thanhToan(tvName.getText().toString(), tvPhone.getText().toString(), tvDiaChi.getText().toString(),
+                                tvTo.getText().toString(), vitriDistric, vitriWards, Constants.ID_STORE);
+                        tinhToan(locationStore,idBill);
+                    }
                 }
             }
         });
@@ -281,5 +299,57 @@ public class MyOderActivity extends AppCompatActivity {
 //            }
         };
         queue.add(jsonObjectRequest);
+    }
+    public void tinhToan(String locationStore,String idBill){
+        double lcXOrder, lcYOrder, lcXStore, lcYStore, phamvi = 0;
+        String[] locationO = locationOrder.split(",");
+        lcXOrder = Double.valueOf(locationO[0]);
+        lcYOrder = Double.valueOf(locationO[1]);
+        String[] locationS = locationStore.split(",");
+        lcXStore = Double.valueOf(locationS[0]);
+        lcYStore = Double.valueOf(locationS[1]);
+        //tang x
+        phamvi += 0.01;
+        if (lcXStore >= lcXOrder - phamvi && lcXStore <= lcXOrder + phamvi) {
+            Log.e("locationOrder3",locationOrder+"|||"+locationStore);
+            if (lcYStore >= lcYOrder - phamvi && lcYStore <= lcYOrder + phamvi) {
+                Log.e("locationOrder4",locationOrder+"|||"+locationStore);
+                Toast.makeText(getApplicationContext(), "Thêm vào gom đơn", Toast.LENGTH_SHORT).show();
+                RequestGomDon requestGomDon = new RequestGomDon(Constants.ID_STORE,locationStore,idBill);
+
+                volleyAddGomDon(requestGomDon);
+            } else {
+                Toast.makeText(getApplicationContext(), "Đơn hàng không gần cửa hàng", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(getApplicationContext(), "Đơn hàng không gần cửa hàng", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+    public void volleyAddGomDon(RequestGomDon requestGomDon) {
+        CallApi.callApi2.addGomDon(requestGomDon).enqueue(new Callback<MessageResponse>() {
+            @Override
+            public void onResponse(retrofit2.Call<MessageResponse> call, retrofit2.Response<MessageResponse> response) {
+                try {
+                    if (response.isSuccessful()) {
+                        Log.e("ok","ok");
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+
+                    Log.e("failed","failed");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MessageResponse> call, Throwable t) {
+
+                Log.e("failed","failed");
+            }
+        });
+    }
+
+    public void getMap(View view) {
+        startActivity(new Intent(MyOderActivity.this,FindOderLocationActivity.class));
     }
 }
