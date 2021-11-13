@@ -1,5 +1,6 @@
 package com.example.marketapp.activity;
 
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
@@ -8,7 +9,6 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -55,6 +55,7 @@ public class FindOderLocationActivity extends FragmentActivity implements OnMapR
         //mapping
         searchView = findViewById(R.id.svLocation);
         btnOrder = findViewById(R.id.btnOrder);
+
         supportMapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.google_maps);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -73,14 +74,16 @@ public class FindOderLocationActivity extends FragmentActivity implements OnMapR
                         Address address = addressList.get(0);
                         latitude1 = address.getLatitude();
                         longitude1 = address.getLongitude();
-                        Log.d("LOCATION", "Address: " + location + " " + "Latitude" + latitude1 + " " + "Longitude" + longitude1);
+                        onLocationChanged(latitude1, longitude1);
+                        Log.d("LOCATION", "Address: " + location + " " + "Latitude " + latitude1 + " " + "Longitude " + longitude1);
                         LatLng latLng = new LatLng(latitude1, longitude1);
                         marker = googleMapF.addMarker(new MarkerOptions().position(latLng).title(location));
                         googleMapF.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
                     }
                     addressList.clear();
-                } catch (Exception e) {
+                }catch (Exception e){
                     e.printStackTrace();
+                    Toast.makeText(FindOderLocationActivity.this, "Address not found!", Toast.LENGTH_SHORT).show();
                 }
                 return false;
             }
@@ -95,28 +98,29 @@ public class FindOderLocationActivity extends FragmentActivity implements OnMapR
         supportMapFragment.getMapAsync(this);
     }
 
-    private void filter(String text) {
-        temp = new ArrayList();
-        geocoder = new Geocoder(FindOderLocationActivity.this);
-        try {
-            addressList = geocoder.getFromLocationName(text, 1);
-            Log.d("LOCATION1", addressList.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-            Log.d("LOCATION2", e.getMessage());
-        }
-        for (Address d : addressList) {
-            if (d.getFeatureName().contains(text)) {
-                latitude1 = d.getLatitude();
-                longitude1 = d.getLongitude();
-                temp.add(d);
-            }
-        }
-        LatLng latLng = new LatLng(latitude1, longitude1);
-        googleMapF.addMarker(new MarkerOptions().position(latLng).title(text));
-        googleMapF.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
-        temp.clear();
-    }
+//    private void filter(String text) {
+//        temp = new ArrayList();
+//        geocoder = new Geocoder(FindOderLocationActivity.this);
+//        try {
+//            addressList = geocoder.getFromLocationName(text, 1);
+//            Log.d("LOCATION1", addressList.toString());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            Log.d("LOCATION2", e.getMessage());
+//        }
+//        for (Address d : addressList) {
+//            if (d.getFeatureName().contains(text)) {
+//                latitude1 = d.getLatitude();
+//                longitude1 = d.getLongitude();
+//                temp.add(d);
+//            }
+//        }
+//        onLocationChanged(latitude1, longitude1);
+//        LatLng latLng = new LatLng(latitude1, longitude1);
+//        googleMapF.addMarker(new MarkerOptions().position(latLng).title(text));
+//        googleMapF.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+//        temp.clear();
+//    }
 
 
 
@@ -134,7 +138,7 @@ public class FindOderLocationActivity extends FragmentActivity implements OnMapR
                 longitude1 = latLng.longitude;
                 onLocationChanged(latitude1, longitude1);
                 getAddress(latitude1, longitude1);
-                Log.d("LOCATION", "Address: " + location + " " + "Latitude" + latitude1 + " " + "Longitude" + longitude1);
+                Log.d("LOCATION", "Address: " + location + " " + "Latitude " + latitude1 + " " + "Longitude " + longitude1);
             }
         });
     }
@@ -160,15 +164,6 @@ public class FindOderLocationActivity extends FragmentActivity implements OnMapR
 
                     marker = googleMapF.addMarker(options);
                     marker.showInfoWindow();
-                   String location2= latLng2.latitude+","+latLng2.longitude;
-                    Log.e("test Map",location2);
-                    btnOrder.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            MyOderActivity.locationOrder = location2;
-                            finish();
-                        }
-                    });
                 }else{
                     Toast.makeText(FindOderLocationActivity.this, "ERROR Clicked Location", Toast.LENGTH_SHORT).show();
                 }
@@ -187,5 +182,4 @@ public class FindOderLocationActivity extends FragmentActivity implements OnMapR
             marker.remove();
         }
     }
-
 }
