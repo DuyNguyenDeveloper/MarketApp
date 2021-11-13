@@ -8,6 +8,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -163,6 +164,15 @@ public class FindOderLocationActivity extends FragmentActivity implements OnMapR
 
                     marker = googleMapF.addMarker(options);
                     marker.showInfoWindow();
+                    String location2= latLng2.latitude+","+latLng2.longitude;
+                    Log.e("test Map",location2);
+                    btnOrder.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            MyOderActivity.locationOrder = location2;
+                            finish();
+                        }
+                    });
                 }else{
                     Toast.makeText(FindOderLocationActivity.this, "ERROR Clicked Location", Toast.LENGTH_SHORT).show();
                 }
