@@ -16,11 +16,11 @@ import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface CallApi {
+
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
     CallApi callApi = new Retrofit.Builder()
@@ -28,7 +28,11 @@ public interface CallApi {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(CallApi.class);
-
+    CallApi callApi2 = new Retrofit.Builder()
+            .baseUrl("http://192.168.1.7:3000/collect/")
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+            .create(CallApi.class);
 
     @POST("api/register")
     Call<ResponseRegister> postRegister(@Body UserRegister user);
@@ -39,8 +43,6 @@ public interface CallApi {
             @Field("email") String email,
             @Field("password") String password
     );
-    @POST("api/updateUser")
-    Call<ResponseRegister> postUpdateUser(@Body UserRegister user,@Header("Authorization") String token);
 
     @FormUrlEncoded
     @POST("api/activeEmail")
@@ -51,6 +53,9 @@ public interface CallApi {
 
     @GET("api/getStore")
     Call<GetStoreF> getAllStore(@Query("token") String token);
+
+    @POST("collectCreate")
+    Call<MessageResponse> addGomDon(@Body RequestGomDon requestGomDon);
 
     @POST("serverda2/update.php")
     Call<com.example.marketapp.service.ServerResponse> updateInterface(@Body com.example.marketapp.service.ServerRequest request);
